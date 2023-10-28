@@ -16,7 +16,7 @@
                 return;
             }
 
-            socket = io.connect('https://sz7k90vk-5000.inc1.devtunnels.ms');
+            socket = io.connect('https://nodepacketsocket.onrender.com');
 
             socket.emit("join-message", room);
             socket.on('screen-data', function(message){
