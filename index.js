@@ -19,7 +19,7 @@ io.on("connection", (socket) => {
     const timestamp = new Date().getTime();
 
     if (timestamp - lastTimestamp > 5000) {
-       console.log("data skipped")
+       console.log(timestamp - lastTimestamp)
       return;
     }
 
