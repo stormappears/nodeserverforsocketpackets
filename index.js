@@ -18,7 +18,7 @@ io.on("connection", (socket) => {
 
     const timestamp = new Date().getTime();
 
-    if (timestamp - lastTimestamp > 1000) {
+    if (timestamp - lastTimestamp > 5000) {
       // Skip the data
       return;
     }
