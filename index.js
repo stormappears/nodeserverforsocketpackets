@@ -1,6 +1,7 @@
 var app = require("express")();
 var http = require("http").createServer(app);
 var io = require("socket.io")(http);
+const lastTimestamp = new Date().getTime();
 
 app.get("/view", (req, res) => {
   res.sendFile(__dirname + "/display.html");
@@ -14,6 +15,14 @@ io.on("connection", (socket) => {
   });
 
   socket.on("screen-data", function (data) {
+
+    const timestamp = new Date().getTime();
+
+    if (timestamp - lastTimestamp > 1000) {
+      // Skip the data
+      return;
+    }
+
     socket.sendBuffer = [];
     data = JSON.parse(data);
     var room = data.room;
