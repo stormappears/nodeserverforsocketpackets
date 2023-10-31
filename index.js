@@ -16,13 +16,6 @@ io.on("connection", (socket) => {
 
   socket.on("screen-data", function (data) {
 
-    const timestamp = new Date().getTime();
-
-    if (timestamp - lastTimestamp > 5000) {
-       console.log(timestamp - lastTimestamp)
-      return;
-    }
-
     socket.sendBuffer = [];
     data = JSON.parse(data);
     var room = data.room;
